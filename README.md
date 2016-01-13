@@ -1,3 +1,3 @@
-##Á·Ï°Ö®ÓÃ<br>
-nasa.py ÏÂÔØhttp://apod.nasa.gov/apod/Ã¿Ìì¸üĞÂµÄÍ¼Æ¬<br>
-national.py ÏÂÔØhttp://photography.nationalgeographic.com/photography/photo-of-the-day/Ã¿Ìì¸üĞÂµÄÍ¼Æ¬<br>
+##ç»ƒä¹ ä¹‹ç”¨<br>
+nasa.py     ä¸‹è½½http://apod.nasa.gov/apod/  æ¯å¤©æ›´æ–°çš„å›¾ç‰‡<br>
+national.py ä¸‹è½½http://photography.nationalgeographic.com/photography/photo-of-the-day/ æ¯å¤©æ›´æ–°çš„å›¾ç‰‡<br>
