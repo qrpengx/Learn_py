@@ -1,0 +1,303 @@
+{
+    "api": {
+        "services": [
+            "HandlerService",
+            "LoggerService",
+            "StatsService"
+        ],
+        "tag": "_QV2RAY_API_"
+    },
+    "dns": {
+        "servers": [
+            "8.8.4.4",
+            "1.1.1.1"
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1",
+            "port": 15490,
+            "protocol": "dokodemo-door",
+            "settings": {
+                "address": "127.0.0.1"
+            },
+            "sniffing": {
+            },
+            "tag": "_QV2RAY_API_INBOUND_"
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 8787,
+            "protocol": "http",
+            "settings": {
+            },
+            "sniffing": {
+                "enabled": false
+            },
+            "tag": "http_IN"
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 8585,
+            "protocol": "socks",
+            "settings": {
+                "accounts": [
+                    {
+                        "pass": "^987^223",
+                        "user": "v2user^"
+                    }
+                ],
+                "auth": "noauth",
+                "ip": "127.0.0.1",
+                "udp": true,
+                "userLevel": 0
+            },
+            "sniffing": {
+                "enabled": false
+            },
+            "tag": "socks_IN"
+        }
+    ],
+    "log": {
+        "loglevel": "error"
+    },
+    "outbounds": [
+        {
+            "_QV2RAY_USE_GLOBAL_FORWARD_PROXY_": false,
+            "protocol": "socks",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "cmcc.dbzdb.club",
+                        "port": 8585,
+                        "users": [
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "dsSettings": {
+                    "path": "/"
+                },
+                "httpSettings": {
+                    "host": [
+                    ],
+                    "path": "/"
+                },
+                "kcpSettings": {
+                    "congestion": false,
+                    "downlinkCapacity": 20,
+                    "header": {
+                        "type": "none"
+                    },
+                    "mtu": 1350,
+                    "readBufferSize": 1,
+                    "tti": 20,
+                    "uplinkCapacity": 5,
+                    "writeBufferSize": 1
+                },
+                "network": "tcp",
+                "quicSettings": {
+                    "header": {
+                        "type": "none"
+                    },
+                    "key": "",
+                    "security": ""
+                },
+                "security": "none",
+                "sockopt": {
+                    "mark": 0,
+                    "tcpFastOpen": false,
+                    "tproxy": "off"
+                },
+                "tcpSettings": {
+                    "header": {
+                        "request": {
+                            "headers": {
+                            },
+                            "method": "GET",
+                            "path": [
+                            ],
+                            "version": "1.1"
+                        },
+                        "response": {
+                            "headers": {
+                            },
+                            "reason": "OK",
+                            "status": "200",
+                            "version": "1.1"
+                        },
+                        "type": "none"
+                    }
+                },
+                "tlsSettings": {
+                    "allowInsecure": false,
+                    "allowInsecureCiphers": false,
+                    "alpn": [
+                    ],
+                    "certificates": [
+                    ],
+                    "disableSessionResumption": true,
+                    "disableSystemRoot": false,
+                    "serverName": ""
+                },
+                "wsSettings": {
+                    "headers": {
+                    },
+                    "path": "/"
+                }
+            },
+            "tag": "http"
+        },
+        {
+            "protocol": "freedom",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "domainStrategy": "AsIs",
+                "redirect": ":0",
+                "userLevel": 0
+            },
+            "streamSettings": {
+                "kcpSettings": {
+                }
+            },
+            "tag": "outBound_DIRECT"
+        },
+        {
+            "protocol": "blackhole",
+            "sendThrough": "0.0.0.0",
+            "settings": {
+                "response": {
+                    "type": "none"
+                }
+            },
+            "streamSettings": {
+                "kcpSettings": {
+                }
+            },
+            "tag": "outBound_BLACKHOLE"
+        }
+    ],
+    "policy": {
+        "system": {
+            "statsInboundDownlink": true,
+            "statsInboundUplink": true,
+            "statsOutboundDownlink": true,
+            "statsOutboundUplink": true
+        }
+    },
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+            {
+                "inboundTag": [
+                    "_QV2RAY_API_INBOUND_"
+                ],
+                "outboundTag": "_QV2RAY_API_",
+                "type": "field"
+            },
+            {
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "outBound_DIRECT",
+                "type": "field"
+            },
+            {
+                "ip": [
+                    "188.138.57.208"
+                ],
+                "outboundTag": "outBound_BLACKHOLE",
+                "type": "field"
+            },
+            {
+                "domain": [
+                    "pinimg.com",
+                    "nyaa.si",
+                    "amazonaws.com",
+                    "jpsmile.com",
+                    "dragonball-multiverse.com",
+                    "db-z.com",
+                    "cloudflare.com",
+                    "bityun.org",
+                    "github.com",
+                    "dragonball-multiverse.com",
+                    "soundcloud.com",
+                    "arukas.io",
+                    "golang.org",
+                    "arctime.org",
+                    "iskytree.net",
+                    "livedoor.biz",
+                    "dbfanmanga.com",
+                    "iskytree.net",
+                    "nyaa.tracker.wf",
+                    "kn3.net",
+                    "archive.cloudera.com",
+                    "pacificrack.com",
+                    "xiangyu-group.com",
+                    "vagex.com",
+                    "btschool.club",
+                    "mangadex.org",
+                    "mediafire.com"
+                ],
+                "outboundTag": "http",
+                "type": "field"
+            },
+            {
+                "ip": [
+                    "39.100.0.111",
+                    "39.99.167.74"
+                ],
+                "outboundTag": "outBound_DIRECT",
+                "type": "field"
+            },
+            {
+                "domain": [
+                    "hdp",
+                    "bnxb.com",
+                    "hyjf.com",
+                    "pptvyun.com",
+                    "smartapps.cn",
+                    "doc88.com",
+                    "ipaddress.com",
+                    "v2ex.com",
+                    "qdtcn.com",
+                    "ningshengjinrong.com",
+                    "mstdt.com",
+                    "baidu.com",
+                    "youku.com",
+                    "maimaichewei.com",
+                    "haogo.tech",
+                    "pacificrack.com",
+                    "nisun-nasdaq.com",
+                    "mirrors.aliyun.com",
+                    "hyjf.com",
+                    "xiaoyusan.com",
+                    "gitee.com",
+                    "cdnmanhua.net",
+                    "manhuaren.com",
+                    "aliyun.com"
+                ],
+                "outboundTag": "outBound_DIRECT",
+                "type": "field"
+            },
+            {
+                "ip": [
+                    "geoip:cn"
+                ],
+                "outboundTag": "outBound_DIRECT",
+                "type": "field"
+            },
+            {
+                "domain": [
+                    "geosite:cn"
+                ],
+                "outboundTag": "outBound_DIRECT",
+                "type": "field"
+            }
+        ]
+    },
+    "stats": {
+    }
+}
